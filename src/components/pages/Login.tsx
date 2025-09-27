@@ -18,18 +18,10 @@ import { toast } from "sonner";
 import HeroImage from "../HeroImage";
 import { useNavigate } from "react-router-dom";
 
-const registerSchema = z
-  .object({
-    firstName: z.string().min(1, "First name is required"),
-    lastName: z.string().min(1, "Last name is required"),
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(8, "Password must be at least 8 characters"),
-    confirmPassword: z.string().min(1, "Confirm password is required"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    path: ["confirmPassword"],
-    message: "Passwords do not match",
-  });
+const registerSchema = z.object({
+  email: z.email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+});
 
 type RegisterFormValues = z.infer<typeof registerSchema>;
 
@@ -46,9 +38,8 @@ const Login = () => {
   });
 
   const onSubmit = async (data: RegisterFormValues) => {
-    const { confirmPassword, ...payload } = data;
     await axios
-      .post("http://localhost:8080/api/v1/auth/register", payload)
+      .post("http://localhost:8080/api/v1/auth/login", data)
       .then((response) => {
         toast.success(
           `Welcome ${response.data.firstName}! Your account has been created.`

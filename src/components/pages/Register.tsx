@@ -96,7 +96,7 @@ const Register = () => {
                     <Input
                       id="firstName"
                       type="text"
-                      placeholder="John"
+                      placeholder="First Name"
                       className={`h-12 border-gray-200 focus:border-black focus:ring-0 ${
                         errors.firstName ? "border-red-500" : ""
                       }`}
@@ -116,7 +116,7 @@ const Register = () => {
                     <Input
                       id="lastName"
                       type="text"
-                      placeholder="Doe"
+                      placeholder="Last Name"
                       className={`h-12 border-gray-200 focus:border-black focus:ring-0 ${
                         errors.lastName ? "border-red-500" : ""
                       }`}
@@ -138,7 +138,7 @@ const Register = () => {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="john@example.com"
+                    placeholder="Email"
                     className={`h-12 border-gray-200 focus:border-black focus:ring-0 ${
                       errors.email ? "border-red-500" : ""
                     }`}

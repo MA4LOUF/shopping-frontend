@@ -41,9 +41,7 @@ const Login = () => {
     await axios
       .post("http://localhost:8080/api/v1/auth/login", data)
       .then((response) => {
-        toast.success(
-          `Welcome ${response.data.firstName}! Your account has been created.`
-        );
+        toast.success(`Welcome ${response.data.firstName}!`);
         navigate("/home");
       })
       .catch((error) => {

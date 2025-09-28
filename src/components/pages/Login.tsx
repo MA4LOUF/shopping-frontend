@@ -49,7 +49,7 @@ const Login = () => {
       .catch((error) => {
         const backendMessage =
           error.response?.data?.error || error.response?.data?.message;
-        toast.error(backendMessage || "Registration failed. Please try again.");
+        toast.error(backendMessage || "Login failed. Please try again.");
       });
   };
 

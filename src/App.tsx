@@ -6,6 +6,7 @@ import Login from "./components/pages/Login.tsx";
 import ProtectedRoute from "./components/routes/ProtectedRoute.tsx";
 import { Toaster } from "sonner";
 import PageNotFound from "./components/pages/PageNotFound.tsx";
+import Home from "./components/pages/Home.tsx";
 
 function App() {
   return (
@@ -21,9 +22,8 @@ function App() {
 
           {/* All other routes are protected */}
           <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<Layout />} />
-            <Route path="home" index element={<Layout />} />
-            {/* Add more protected routes here */}
+            <Route index element={<Layout />} />
+            <Route path="home" element={<Home />} />
           </Route>
 
           {/* Catch-all redirect */}

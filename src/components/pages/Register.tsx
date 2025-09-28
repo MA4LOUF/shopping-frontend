@@ -4,6 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
@@ -16,7 +17,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import HeroImage from "../HeroImage";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const registerSchema = z
   .object({
@@ -51,6 +52,7 @@ const Register = () => {
     await axios
       .post("http://localhost:8080/api/v1/auth/register", payload)
       .then((response) => {
+        localStorage.setItem("token", response.data.token);
         toast.success(
           `Welcome ${response.data.firstName}! Your account has been created.`
         );
@@ -237,6 +239,18 @@ const Register = () => {
                 </Button>
               </form>
             </CardContent>
+            <CardFooter className="flex flex-col space-y-4 pt-4">
+              {/* Login Link */}
+              <p className="text-center text-sm text-gray-600">
+                Already have an account?{" "}
+                <Link
+                  to="/login"
+                  className="font-medium text-black hover:underline"
+                >
+                  Login
+                </Link>
+              </p>
+            </CardFooter>
           </Card>
         </div>
       </div>

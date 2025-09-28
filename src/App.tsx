@@ -22,8 +22,10 @@ function App() {
 
           {/* All other routes are protected */}
           <Route element={<ProtectedRoute />}>
-            <Route index element={<Layout />} />
-            <Route path="home" element={<Home />} />
+            <Route element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="home" element={<Home />} />
+            </Route>
           </Route>
 
           {/* Catch-all redirect */}
